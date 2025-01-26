@@ -1,0 +1,31 @@
+<body>
+  <header>
+      <h1>Restaurant POS</h1>
+  </header>
+
+  <main [formGroup]="caisseForm">
+      <section class="menu">
+          <h2>Menu</h2>
+          <div class="menu-items">
+              <button class="item" data-name="Pizza" data-price="10" (click)="click1()">pizza - $10</button>
+              <button class="item" data-name="Burger" data-price="7">{{Burger}}</button>
+              <button class="item" data-name="Pasta" data-price="12">Pasta - $12</button>
+              <button class="item" data-name="Salad" data-price="5">Salad - $5</button>
+          </div>
+      </section>
+
+      <section class="bill">
+          <h2>Order Summary</h2>
+           <ul id="order-list"></ul>
+          <div class="total">
+              <strong>Total: $<span id="total-price">0</span></strong>
+          </div>
+          <button class="checkout" (click)="click1()">Checkout</button>
+      </section>
+  </main>
+
+  <footer>
+      <p>&copy; 2025 Restaurant POS</p>
+  </footer>
+
+</body>
