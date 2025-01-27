@@ -21,7 +21,7 @@ function caisse(){
         });
     
         document.querySelector(".checkout").addEventListener("click", () => {
-            alert(`Total amount to pay: $${total.toFixed(2)}`);
+           
             orderList.innerHTML = "";
             totalPrice.textContent = "0";
             total = 0;

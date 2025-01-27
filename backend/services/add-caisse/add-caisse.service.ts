@@ -15,4 +15,8 @@ caisseUrl='http://localhost:3000/add-caisse'
   caisseCheck(){
     return this.httpClient.get<{res:any}>(`${this.caisseUrl}`)
   }
+
+  deleteById(id:any){
+    return this.httpClient.delete<{message:any}>(`${this.caisseUrl}/${id}`,)
+  }
 }
