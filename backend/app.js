@@ -5,6 +5,7 @@ mongoose.connect('mongodb://127.0.0.1:27017/caisseR')
 
 const app = express()
 const bodyParser = require('body-parser');
+const archive = require('./models/archive');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -69,5 +70,24 @@ app.delete('/add-caisse/:id', (req, res)=>{
        })
         }
     )
+})
+
+// add archive 
+app.post('/archives/addArchive', (req, res)=>{
+    const archiveSchema = new archive ({
+        name : req.body.name,
+        prix : req.body.prix,
+        date : req.body.date,
+        time : req.body.time
+    })
+    archiveSchema.save().then(()=>{
+        res.status(200).json({
+            message : 'success'
+        })
+    }).catch((error)=>{
+        res.status(200).json({
+            message : 'error'
+        })
+    })
 })
 module.exports = app

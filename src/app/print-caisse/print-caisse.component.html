@@ -1,35 +1,27 @@
 <body>
     <div class="ticket">
       <div class="header">
-        <h1>Magasin ABC</h1>
+        <h1>Restaurant POS</h1>
         <p>123 Rue Exemple, 75000 Paris</p>
-        <p>Téléphone : 01 23 45 67 89</p>
-        <p>Date: 27/01/2025 15:00</p>
+        <p>Téléphone : +216 99 70 99 90</p>
+        <p>Date: {{formatDate}} {{timeString}}</p>
       </div>
       
       <div class="items">
-        <div class="item">
-          <p>Article 1</p>
-          <p>€10.00</p>
-        </div>
-        <div class="item">
-          <p>Article 2</p>
-          <p>€20.00</p>
-        </div>
-        <div class="item">
-          <p>Article 3</p>
-          <p>€5.50</p>
+        <div class="item" *ngFor="let finded of finded">
+          <p>{{finded.name}}</p>
+          <p>{{finded.prix}} DT</p>
         </div>
       </div>
   
       <div class="total">
-        <p>Total : <strong>€35.50</strong></p>
+        <p>Total : <strong>{{sum}} DT</strong></p>
       </div>
   
       <div class="footer">
         <p>Merci pour votre achat !</p>
         <p>Suivez-nous sur les réseaux sociaux !</p>
       </div>
-      <button onclick="window.print()">Imprimer</button>
+      <button onclick="window.print()" (click)="print()">Imprimer</button>
     </div>
   </body>
