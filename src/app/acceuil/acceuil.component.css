@@ -111,3 +111,62 @@ footer {
     }
 }
 
+/* toogle */
+.menu-toggle {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1000;
+    cursor: pointer;
+  }
+  
+  .menu-toggle span {
+    display: block;
+    width: 30px;
+    height: 4px;
+    background-color: #333;
+    margin: 5px 0;
+    border-radius: 5px;
+  }
+  
+  .navbar {
+    position: fixed;
+    top: 0;
+    left: -250px; /* Start off-screen */
+    width: 250px;
+    height: 100%;
+    background-color: #ff6f00;
+    color: white;
+    transition: transform 0.3s ease;
+    z-index: 999;
+  }
+  
+  .navbar ul {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 100px; /* Space for the toggle button */
+  }
+  
+  .navbar ul li {
+    padding: 15px;
+    text-align: center;
+  }
+  
+  .navbar ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+  }
+  
+  /* Slide in the navbar when active */
+  .navbar.active {
+    transform: translateX(250px); /* Slide in */
+  }
+  
+
+
+  
+
+
+
+

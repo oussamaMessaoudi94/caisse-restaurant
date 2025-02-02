@@ -43,7 +43,6 @@ export class PrintCaisseComponent implements OnInit {
   }
 
   print(){
-    alert('imprime')
     for (let i = 0; i < this.finded.length; i++) {
       let p = {name:'', prix:'', date:'', time:''}
       p.name = this.finded[i].name,
@@ -58,6 +57,12 @@ export class PrintCaisseComponent implements OnInit {
         }
       )
       
+      this.addCaisse.deleteCaisse().subscribe(
+        (data)=>{
+          console.log(data.message);
+          
+        }
+      )
     }
 
    

@@ -90,4 +90,15 @@ app.post('/archives/addArchive', (req, res)=>{
         })
     })
 })
+
+// delete all caisse
+app.delete('/add-caisse', (req, res)=>{
+    caisse.deleteMany().then(
+        (result)=>{
+            res.status(200).json({
+                message : 'delted'
+            })
+        }
+    )
+})
 module.exports = app
