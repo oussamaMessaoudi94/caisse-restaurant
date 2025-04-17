@@ -131,7 +131,7 @@ footer {
   
   .navbar {
     position: fixed;
-    top: 0;
+    top: 8px;
     left: -250px; /* Start off-screen */
     width: 250px;
     height: 100%;

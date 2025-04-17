@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { AddCaisseService } from 'backend/services/add-caisse/add-caisse.service';
 import { PrintCaisseComponent } from '../print-caisse/print-caisse.component';
 import { Router } from '@angular/router';
@@ -43,7 +43,6 @@ export class AcceuilComponent implements OnInit {
 
       }
     )
-    location.reload()
   }
 
   burger() {

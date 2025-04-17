@@ -23,10 +23,10 @@
   
     <main>
         <section class="menu">
-            <h2>Menu</h2>
-            <div class="menu-items">
-                <button class="item" data-name="Pizza" data-price="10" (click)="pizza()">pizza - $10</button>
-                <button class="item" data-name="Burger" data-price="7" (click)="burger()">Burger - $7</button>
+            <h2>Menu</h2> 
+            <div class="menu-items" >
+                <button class="item" data-name="Pizza" data-price="10" formControlName="pizza"  (click)="pizza()">pizza - $10</button>
+                <button class="item" data-name="Burger" data-price="7" formControlName="burger" (click)="burger()">Burger - $7</button>
                 <button class="item" data-name="Pasta" data-price="12" (click)="pasta()">Pasta - $12</button>
                 <button class="item" data-name="Salad" data-price="5" (click)="salad()">Salad - $5</button>
             </div>
@@ -47,7 +47,7 @@
         </section>
     </main>
   
-    <footer>
+    <footer style="margin-top: 170px;">
         <p>&copy; 2025 Restaurant POS</p>
     </footer>
   
