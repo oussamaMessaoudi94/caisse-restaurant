@@ -3,7 +3,8 @@ const mongoose = require('mongoose')
 
 const caisseSchema = mongoose.Schema({
     name : String,
-    prix : Number
+    prix : Number,
+    qty : Number
 })
 
 const caisse = mongoose.model('caisse', caisseSchema)

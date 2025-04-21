@@ -35,7 +35,8 @@ app.get('', (req,res)=>{
 app.post('/add-caisse/caisse', (req, res)=>{
     const caisseSchema = new caisse ({
         name : req.body.name,
-        prix : req.body.prix
+        prix : req.body.prix,
+        qty : req.body.qty
     })
     caisseSchema.save().then(()=>{
         res.status(200).json({
@@ -101,4 +102,34 @@ app.delete('/add-caisse', (req, res)=>{
         }
     )
 })
-module.exports = app
+
+app.get('/add-caisse/:id', (req, res) => {
+    const id = req.params.id;
+  
+    // Validate MongoDB ObjectId
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+      return res.status(400).json({ message: "Invalid ID format" });
+    }
+  
+    caisse.findOne({ _id: id })
+      .then(result => {
+        if (result) {
+          res.status(200).json({ resId: result });
+        } else {
+          res.status(404).json({ message: "Caisse not found" });
+        }
+      })
+      .catch(err => {
+        console.error(err);
+        res.status(500).json({ message: "Server error", error: err });
+      });
+  });
+
+  app.put('/add-caisse/:id', (req, res) => {
+caisse.findByIdAndUpdate({_id:req.params.id}, req.body).then((result)=>{
+    res.status(200).json({
+        message:'update'     
+    })
+})
+  });
+module.exports = app 

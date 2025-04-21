@@ -4,7 +4,8 @@ import { PrintCaisseComponent } from './print-caisse/print-caisse.component';
 import { AcceuilComponent } from './acceuil/acceuil.component';
 
 const routes: Routes = [
-  {path:'', component:AcceuilComponent},
+  {path:'home', component:AcceuilComponent},
+  {path:'home/:id', component:AcceuilComponent},
   {path:'printCaisse', component:PrintCaisseComponent}
 ];
 

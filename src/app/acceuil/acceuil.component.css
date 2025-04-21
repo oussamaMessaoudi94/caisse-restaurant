@@ -166,7 +166,177 @@ footer {
 
 
   
+  @import url("https://fonts.googleapis.com/css2?family=Lato&display=swap");
 
 
+  
+  .heading {
+    font-size: 1.5em;
+    margin-bottom: 12px;
+  }
+  
+  .card {
+    background: #fff;
+    background-image: linear-gradient(48deg, #fff 0%, #e5e6ef 100%);
+    border-top-right-radius: 12px;
+    border-bottom-left-radius: 12px;
+    box-shadow: -20px 20px 35px 1px rgba(10, 49, 86, 0.04);
+    display: flex;
+    flex-direction: column;
+    padding: 32px;
+    margin: 40px;
+    max-width: 400px;
+    width: 100%;
+  }
+  
+  .content-wrapper {
+    font-size: 1.1em;
+    margin-bottom: 44px;
+  }
+  .content-wrapper:last-child {
+    margin-bottom: 0;
+  }
+  
+  .button,
+  .btn {
+    align-items: center;
+    background: #e5e6ef;
+    border: 1px solid #5a72b5;
+    border-radius: 4px;
+    color: #121943;
+    cursor: pointer;
+    display: flex;
+    font-size: 1em;
+    font-weight: 700;
+    height: 40px;
+    justify-content: center;
+    width: 150px;
+  }
+  .button:hover,
+  .btn:hover {
+    background: #d3eeff;
+  }
+  .button:focus-visible,
+  .btn:focus-visible {
+    background: #d3eeff;
+    border: 2px solid transparent;
+    box-shadow: 0 0 0 2px #e5e6ef, 0 0 0 4px #121943;
+    outline: solid 4px transparent;
+  }
+  
+  .link {
+    color: #121943;
+  }
+  .link:focus {
+    box-shadow: 0 0 0 2px #e5e6ef, 0 0 0 4px #121943;
+  }
+  
+  .input-wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+  .input-wrapper .label {
+    align-items: baseline;
+    display: flex;
+    font-weight: 700;
+    justify-content: space-between;
+    margin-bottom: 8px;
+  }
+  .input-wrapper .optional {
+    color: #5a72b5;
+    font-size: 0.9em;
+  }
+  .input-wrapper .input {
+    border: 1px solid #5a72b5;
+    border-radius: 4px;
+    height: 40px;
+    padding: 8px;
+    margin-bottom: 8px;
+  }
+  .input-wrapper .input:focus {
+    border: 2px solid transparent;
+    box-shadow: 0 0 0 2px #e5e6ef, 0 0 0 4px #121943;
+    outline: solid 4px transparent;
+  }
+  
+  *:focus,
+  input[type=radio]:focus + label::before {
+    border: transparent;
+    box-shadow: 0px 0px 0px 2px #121943;
+    outline: solid 4px transparent;
+  }
+  
+  code {
+    background: #e5e6ef;
+    border: 1px solid #5a72b5;
+    border-radius: 4px;
+    padding: 2px 4px;
+  }
+  
+  .card {
+    border: 1px solid #ddd;
+    padding: 16px;
+    margin: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  }
+  
+  button {
+    padding: 8px 12px;
+    margin-top: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  
+  .modal {
+    position: fixed;
+    margin-left: 25%;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .modal-content {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    text-align: center;
+    min-width: 300px;
+  }
+.number-input {
+  margin-left: 240px;
+  display: inline-flex;
+  align-items: center;
+  border-radius: 8px;
+  overflow: hidden;
+}
 
+.number-input input {
+  width: 100px;
+  text-align: center;
+  border: none;
+  outline: none;
+}
 
+.number-input button {
+  background: #007bff;
+  color: white;
+  border: none;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  font-size: 18px;
+  margin-top: -10px;
+}
+
+.number-input button:hover {
+  background: #0056b3;
+}
