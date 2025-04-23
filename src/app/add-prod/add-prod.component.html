@@ -1,0 +1,85 @@
+<app-header></app-header>
+<div class="container">
+    <div class=" text-center mt-5 ">
+
+        <h1>Add Prod</h1>
+
+
+    </div>
+
+
+    <div class="row ">
+        <div class="col-lg-7 mx-auto">
+            <div class="card mt-2 mx-auto p-4 bg-light">
+                <div class="card-body bg-light">
+
+                    <div class="container">
+                        <form id="contact-form" role="form">
+
+
+
+                            <div class="controls" [formGroup]="prodForm">
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="form_name">Name Prod *</label>
+                                            <input id="form_name" type="text" name="name" class="form-control"
+                                                placeholder="Please enter your name prod *" formControlName="name"
+                                                required="required" data-error="Firstname is required.">
+
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="form_lastname">prix *</label>
+                                            <input id="form_lastname" type="number" name="surname" class="form-control"
+                                                placeholder="Please enter your prix *" formControlName="prix"
+                                                required="required" data-error="Lastname is required.">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="form_need">Add specify *</label>
+                                            <select id="form_need" name="need" class="form-control" required="required"
+                                                data-error="Please specify your need." formControlName="specify">
+                                                <option value="" selected disabled>--Select Your Issue--</option>
+                                                <option>food</option>
+                                                <option>cafee</option>
+                                            </select>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+
+
+                                    <div class="col-md-12">
+
+                                        <input type="submit" class="btn btn-success btn-send  pt-2 btn-block
+                        " value="Add" (click)="addProd(prodForm.value)">
+
+                                    </div>
+
+                                </div>
+
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+
+            </div>
+            <!-- /.8 -->
+
+        </div>
+        <!-- /.row-->
+
+    </div>
+</div>
+<footer style="margin-top: 170px;">
+    <p>&copy; 2025 Restaurant POS</p>
+</footer>

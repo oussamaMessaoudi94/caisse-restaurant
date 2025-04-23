@@ -6,6 +6,7 @@ mongoose.connect('mongodb://127.0.0.1:27017/caisseR')
 const app = express()
 const bodyParser = require('body-parser');
 const archive = require('./models/archive');
+const prod = require('./models/add-prod');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -31,12 +32,44 @@ app.get('', (req,res)=>{
     res.send('hello world')
 })
 
+// add prod
+app.post('/addProduct/addProd', (req, res)=>{
+    const prodSchema = new prod ({
+        name : req.body.name,
+        prix : req.body.prix,
+        qty : req.body.qty,
+        specify : req.body.specify
+    })
+    prodSchema.save().then(()=>{
+        res.status(200).json({
+            message : 'success'
+        }) 
+    })
+    .catch((error)=>{
+        res.status(200).json({
+            message : 'error'
+        })
+    })
+})
+
+// get all prod
+app.get('/addProduct', (req, res)=>{
+    prod.find().then(
+        (finded)=>{
+            res.status(200).json({
+                res : finded
+            })
+        }
+    )
+})
+
 // add caisse
 app.post('/add-caisse/caisse', (req, res)=>{
     const caisseSchema = new caisse ({
         name : req.body.name,
         prix : req.body.prix,
-        qty : req.body.qty
+        qty : req.body.qty,
+        specify : req.body.specify
     })
     caisseSchema.save().then(()=>{
         res.status(200).json({

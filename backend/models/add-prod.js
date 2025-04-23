@@ -8,6 +8,6 @@ const caisseSchema = mongoose.Schema({
     specify : String
 })
 
-const caisse = mongoose.model('caisse', caisseSchema)
+const prod = mongoose.model('prod', caisseSchema)
 
-module.exports = caisse
+module.exports = prod

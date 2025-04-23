@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { AddCaisseService } from 'backend/services/add-caisse/add-caisse.service';
 import { PrintCaisseComponent } from '../print-caisse/print-caisse.component';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AddProdService } from 'backend/services/add-prod/add-prod.service';
 declare function caisse(): void
 declare function toggle(): void
 @Component({
@@ -11,132 +12,57 @@ declare function toggle(): void
   styleUrls: ['./acceuil.component.css']
 })
 export class AcceuilComponent implements OnInit {
-  finded: any = {}
+  findedProd: any = {}
+  selected :any
+  selectedProducts: any[] = [];
   sum: number = 0
-  sum2: number = 0
-  selectedItem: any = null;
-  id: any
-  findedId: any = {}
   caisseForm!: FormGroup
-  constructor(private fb: FormBuilder, private addCaisse: AddCaisseService, private router: Router, private activatedRoute: ActivatedRoute) { }
+  constructor(private fb: FormBuilder, private addCaisse: AddCaisseService, private addProdService: AddProdService, private router: Router, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
     caisse()
     toggle()
-    this.id = this.activatedRoute.snapshot.paramMap.get('id');
-    if (this.id) {
-      this.addCaisse.caisseCheckId(this.id).subscribe(
-        (data) => {
-          this.findedId = data.resId;
-          console.log('✅ Caisse found:', this.findedId);
-        },
-        (error) => {
-          console.error('❌ Failed to load caisse:', error);
-        }
-      );
+
+    this.addProdService.getProd().subscribe(
+      (data) => {
+        this.findedProd = data.res
+      }
+    )
+  }
+
+  moveAdd(id: any) {
+    const selectedProd = this.findedProd.find((prod: any) => prod._id === id);
+    if (selectedProd) {
+      // Prevent adding duplicates (optional)
+      if (!this.selectedProducts.some((p:any) => p._id === selectedProd._id)) {
+        this.selectedProducts.push(selectedProd);
+        this.sum += selectedProd.qty * selectedProd.prix
+      }
+      console.log('Selected Products:', this.selectedProducts);
     } else {
-      console.warn('⚠️ No ID found in the route!');
+      console.log('Product not found with ID:', id);
     }
-    this.addCaisse.caisseCheck().subscribe(
-      (data) => {
-        this.finded = data.res
-
-        for (let i = 0; i < this.finded.length; i++) {
-          this.sum2 = (this.finded[i].prix * this.finded[i].qty)
-          this.sum += this.sum2
-        }
-      }
-    )
   }
-
-  pizza() {
-    let p = { name: '', prix: '', qty: '' }
-    p.name = 'pizza',
-      p.prix = '11'
-    p.qty = '1'
-
-
-    this.addCaisse.caisse(p).subscribe(
-      (data) => {
-        console.log(data.message);
-
-      }
-    )
-    location.reload()
-  }
-
-  burger() {
-    let b = { name: '', prix: '', qty: '' }
-    b.name = 'burger',
-      b.prix = '12'
-    b.qty = '1'
-    this.addCaisse.caisse(b).subscribe(
-      (data) => {
-        console.log(data.message);
-
-      }
-    )
-    location.reload()
-  }
-  pasta() {
-    let pa = { name: '', prix: '', qty: '' }
-    pa.name = 'pasta',
-      pa.prix = '16'
-    pa.qty = '2'
-    this.addCaisse.caisse(pa).subscribe(
-      (data) => {
-        console.log(data.message);
-
-      }
-    )
-    location.reload()
-  }
-  salad() {
-    let s = { name: '', prix: '', qty: '' }
-    s.name = 'salad',
-      s.prix = '20'
-    s.qty = '1'
-    this.addCaisse.caisse(s).subscribe(
-      (data) => {
-        console.log(data.message);
-
-      }
-    )
-    location.reload()
-  }
-
-  deleteById(id: any) {
-    this.addCaisse.deleteById(id).subscribe(
-      (data) => {
-        console.log(data.message);
-
-      }
-    )
-    location.reload()
+  
+  removeProd(id: any) {
+    this.selectedProducts = this.selectedProducts.filter(prod => prod._id !== id);
   }
 
   print() {
-    this.router.navigate([`printCaisse`])
-  }
-
-  openModal(id: any) {
-    this.selectedItem = id;
-    this.router.navigate([`home/${id}`])
-
-  }
-
-  closeModal() {
-    this.selectedItem = null;
-    this.router.navigate([`home`])
-  }
-  update(id: any) {
-    this.addCaisse.caisseCheckPut(this.findedId).subscribe(
-      (response) => {
-        console.log("✅ Update successful:", response.message);
-      },
-      (error) => {
-        console.error("❌ Update failed:", error);
-      }
-    );
+  
+    let x = {name:'', prix:'', qty:'', id:''}
+    for (let i = 0; i < this.selectedProducts.length; i++) {
+      x.name = this.selectedProducts[i].name
+      x.prix = this.selectedProducts[i].prix
+      x.qty = this.selectedProducts[i].qty
+      x.id = this.selectedProducts[i]._id
+      this.addCaisse.caisse(x).subscribe(
+        (data)=>{
+          console.log(data.message);
+          
+        }
+      )
+    }
+this.router.navigate(['printCaisse'])
   }
 }

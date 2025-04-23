@@ -7,12 +7,16 @@ import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { PrintCaisseComponent } from './print-caisse/print-caisse.component';
 import { AcceuilComponent } from './acceuil/acceuil.component';
+import { AddProdComponent } from './add-prod/add-prod.component';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PrintCaisseComponent,
-    AcceuilComponent
+    AcceuilComponent,
+    AddProdComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,

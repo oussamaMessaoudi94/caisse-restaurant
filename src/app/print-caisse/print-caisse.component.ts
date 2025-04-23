@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AddCaisseService } from 'backend/services/add-caisse/add-caisse.service';
 import { ArchiveService } from 'backend/services/archives/archive.service';
-import { now } from 'mongoose';
-import { find } from 'rxjs';
 
 @Component({
   selector: 'app-print-caisse',
@@ -15,13 +14,14 @@ export class PrintCaisseComponent implements OnInit {
   date:any
   formatDate:any
   timeString :any
-  constructor(private addCaisse: AddCaisseService, private archive:ArchiveService ) { }
+  constructor(private addCaisse: AddCaisseService, private archive:ArchiveService, private router:Router ) { }
 
   ngOnInit(): void {
 
     this.addCaisse.caisseCheck().subscribe(
       (data) => {
         this.finded = data.res
+console.log(this.finded);
 
         for (let i = 0; i < this.finded.length; i++) {
           this.sum += this.finded[i].prix
@@ -44,7 +44,7 @@ export class PrintCaisseComponent implements OnInit {
 
   print(){
     for (let i = 0; i < this.finded.length; i++) {
-      let p = {name:'', prix:'', date:'', time:''}
+      let p = {name:'', prix:'', qty:'', date:'', time:''}
       p.name = this.finded[i].name,
       p.prix = this.finded[i].prix,
       p.date = this.formatDate,
@@ -56,15 +56,13 @@ export class PrintCaisseComponent implements OnInit {
           
         }
       )
-      
       this.addCaisse.deleteCaisse().subscribe(
         (data)=>{
-          console.log(data.message);
-          
+          console.log(data.message);      
         }
       )
     }
 
-   
+   this.router.navigate([''])
   }
 }
