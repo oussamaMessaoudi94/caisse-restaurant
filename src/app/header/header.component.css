@@ -144,7 +144,7 @@ footer {
   .navbar ul {
     list-style-type: none;
     padding: 0;
-    margin-top: 100px; /* Space for the toggle button */
+    margin-top: -50px; /* Space for the toggle button */
   }
   
   .navbar ul li {
@@ -341,47 +341,63 @@ footer {
   background: #0056b3;
 }
 
-.nav {
-  font-family: Arial, sans-serif;
-  margin-left: 25px;
-}
 
-.dropdown {
-  position: relative;
-  display: inline-block;
-}
 
-.dropdown > a {
-  text-decoration: none;
-  color: #ffffff;
+#dropdown ul li { 
+  display: inline-block;   
+  text-align: left; 
+}
+#dropdown a {
+  margin-top: 20px;
+  margin-left: 8px;
+  display: block;
+  transition: color 0.2s;
+  color: var(--link-color);
   font-size: 18px;
-  padding: 10px;
-  display: inline-block;
+  text-decoration: none; 
 }
-
-.dropdown-content {
+#dropdown ul ul li a {
+  color: var(--link-color); 
+}
+#dropdown ul ul li a:focus,
+#dropdown ul ul li a:active {
+  color: var(--link-active-color);
+}
+#dropdown a:hover,
+#dropdown a:focus,
+#dropdown a:active,
+#dropdown a:focus:hover,
+#dropdown a:active:hover {
+  color: var(--link-active-color);
+}
+#dropdown ul ul {
   display: none;
-  position: relative;
-  left: 0;
-  background-color:#ff6f00;
-  min-width: 160px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  z-index: 1;
+  position: absolute; 
+  background: #ff6f00; 
+  /* box-shadow: rgba(0, 0, 0, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px; */ /* enable/disable/tune at will */
+  border: 1px solid silver; /* enable/disable/tune at will */ 
+        text-align: left;
+}
+#dropdown ul ul li {
+  display: list-item;  
+  position: relative;      
+   text-align: left; margin: -10px; 
+}
+#dropdown ul li:focus > ul,
+#dropdown ul li:active > ul {
+  display: inherit;
+}
+#dropdown a:focus + ul,
+#dropdown a:active + ul {
+  display: inherit;
 }
 
-.dropdown-content a {
-  padding: 12px 16px;
-  display: block;
-  text-decoration: none;
-  color: #333;
+/* from https://stackoverflow.com/questions/5281556/is-there-a-css-way-to-add-an-arrow-if-a-ul-has-a-ul-child */ 
+#dropdown ul li > a:not(:only-child):after { 
+  content: '\00a0\00a0▼'; 
+  font-size: 0.8rem; 
+  vertical-align: middle; 
+  color: #444;
 }
 
-.dropdown-content a:hover {
-  background-color: #f0f0f0;
-}
 
-.dropdown:hover .dropdown-content {
-  display: block;
-}

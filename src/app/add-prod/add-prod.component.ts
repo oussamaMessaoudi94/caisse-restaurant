@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AddProdService } from 'backend/services/add-prod/add-prod.service';
 
 @Component({
@@ -9,9 +10,27 @@ import { AddProdService } from 'backend/services/add-prod/add-prod.service';
 })
 export class AddProdComponent implements OnInit {
 prodForm! : FormGroup
-  constructor(private fb: FormBuilder, private addProdService: AddProdService) { }
+id:any
+findId:any={}
+title:any
+  constructor(private fb: FormBuilder, private addProdService: AddProdService, private activatedRoute:ActivatedRoute, private router:Router) { }
 
   ngOnInit(): void {
+
+      this.id = this.activatedRoute.snapshot.paramMap.get('id')
+      if (this.id) {
+      this.addProdService.getProdById(this.id).subscribe(
+        (data)=>{
+          this.findId = data.resId
+        }
+      )
+        this.title = 'Edit Prod'
+    } else {
+      console.log('not Found ID');
+            this.title = 'Add Prod'
+    }
+
+
     this.prodForm = this.fb.group({
       name : [''],
       prix : [''],
@@ -20,12 +39,22 @@ prodForm! : FormGroup
     })
   }
 
+
   addProd(id:any){
-this.addProdService.addProd(this.prodForm.value).subscribe(
-  (data)=>{
-    console.log(data.message);
-    
-  }
-)
-  }
+    if (id) {
+      this.addProdService.editProd(this.findId).subscribe(
+        (data)=>{
+          console.log(data.message);
+        }
+      )
+      this.router.navigate(['my-prod'])
+    } else {
+      this.addProdService.addProd(this.prodForm.value).subscribe(
+        (data)=>{
+          console.log(data.message); 
+        }
+      )
+      this.router.navigate(['my-prod'])
+        }
+    }
 }

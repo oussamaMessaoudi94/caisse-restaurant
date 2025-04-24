@@ -5,7 +5,6 @@ import { PrintCaisseComponent } from '../print-caisse/print-caisse.component';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AddProdService } from 'backend/services/add-prod/add-prod.service';
 declare function caisse(): void
-declare function toggle(): void
 @Component({
   selector: 'app-acceuil',
   templateUrl: './acceuil.component.html',
@@ -21,7 +20,6 @@ export class AcceuilComponent implements OnInit {
 
   ngOnInit(): void {
     caisse()
-    toggle()
 
     this.addProdService.getProd().subscribe(
       (data) => {

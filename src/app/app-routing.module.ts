@@ -1,13 +1,16 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { Route, RouterModule, RouterState, Routes } from '@angular/router';
 import { PrintCaisseComponent } from './print-caisse/print-caisse.component';
 import { AcceuilComponent } from './acceuil/acceuil.component';
 import { AddProdComponent } from './add-prod/add-prod.component';
+import { TableProdComponent } from './table-prod/table-prod.component';
 
 const routes: Routes = [
   {path:'', component:AcceuilComponent},
   {path:'printCaisse', component:PrintCaisseComponent},
-  {path:'add-prod', component:AddProdComponent}
+  {path:'add-prod', component:AddProdComponent},
+  {path:'add-prod/:id', component:AddProdComponent},
+  {path:'my-prod', component:TableProdComponent},
 ];
 
 @NgModule({

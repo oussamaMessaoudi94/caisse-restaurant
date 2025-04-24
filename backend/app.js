@@ -63,6 +63,43 @@ app.get('/addProduct', (req, res)=>{
     )
 })
 
+// get all prod by id
+app.get('/addProduct/:id', (req, res)=>{
+    prod.findOne({_id:req.params.id}).then(
+        (finded)=>{
+            res.status(200).json({
+                resId : finded
+            })
+        }
+    ) 
+})
+
+// edit prod
+app.put('/addProduct/:id', (req, res)=>{
+    prod.updateOne({_id:req.params.id}, req.body).then(
+        (result)=>{
+            if (result) {
+                res.status(200).json({
+                    message : 'update'
+                })
+            }
+        }
+    ) 
+})
+
+// delete prod
+app.delete('/addProduct/:id', (req, res)=>{
+    prod.deleteOne({_id:req.params.id}).then(
+        (result)=>{
+            if (result) {
+                res.status(200).json({
+                    message : 'update'
+                })
+            }
+        }
+    ) 
+})
+
 // add caisse
 app.post('/add-caisse/caisse', (req, res)=>{
     const caisseSchema = new caisse ({

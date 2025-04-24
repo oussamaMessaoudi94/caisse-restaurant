@@ -9,6 +9,9 @@ import { PrintCaisseComponent } from './print-caisse/print-caisse.component';
 import { AcceuilComponent } from './acceuil/acceuil.component';
 import { AddProdComponent } from './add-prod/add-prod.component';
 import { HeaderComponent } from './header/header.component';
+import { TableProdComponent } from './table-prod/table-prod.component';
+import { NgxPaginationModule } from 'ngx-pagination';
+
 
 @NgModule({
   declarations: [
@@ -16,7 +19,9 @@ import { HeaderComponent } from './header/header.component';
     PrintCaisseComponent,
     AcceuilComponent,
     AddProdComponent,
-    HeaderComponent
+    HeaderComponent,
+    TableProdComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -24,6 +29,7 @@ import { HeaderComponent } from './header/header.component';
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
+    NgxPaginationModule
     
   ],
   providers: [],

@@ -15,4 +15,16 @@ prodUrl='http://localhost:3000/addProduct'
   getProd(){
     return this.httpClient.get<{res:any}>(`${this.prodUrl}`)
   }
+
+  getProdById(id:any){
+    return this.httpClient.get<{resId:any}>(`${this.prodUrl}/${id}`)
+  }
+
+  editProd(trandfert:any){
+    return this.httpClient.put<{message:any}>(`${this.prodUrl}/${trandfert._id}`, trandfert)
+  }
+
+  deleteProd(id:any){
+    return this.httpClient.delete<{message:any}>(`${this.prodUrl}/${id}`)
+  }
 }
