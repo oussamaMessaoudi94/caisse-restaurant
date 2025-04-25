@@ -11,6 +11,8 @@ import { AddProdComponent } from './add-prod/add-prod.component';
 import { HeaderComponent } from './header/header.component';
 import { TableProdComponent } from './table-prod/table-prod.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { ComptabiliteComponent } from './comptabilite/comptabilite.component';
+import { LoginComponent } from './login/login.component';
 
 
 @NgModule({
@@ -21,6 +23,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
     AddProdComponent,
     HeaderComponent,
     TableProdComponent,
+    ComptabiliteComponent,
+    LoginComponent,
 
   ],
   imports: [

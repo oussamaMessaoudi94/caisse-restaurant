@@ -11,7 +11,7 @@
         <div class="item" *ngFor="let finded of finded">
           <p>{{finded.name}}</p>
           <p>x{{finded.qty}}</p>
-          <p>{{finded.prix}} DT</p>
+          <p>{{finded.prix * finded.qty}} DT</p>
         </div>
       </div>
   

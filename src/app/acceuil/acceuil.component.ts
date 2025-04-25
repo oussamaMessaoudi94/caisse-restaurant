@@ -48,11 +48,12 @@ export class AcceuilComponent implements OnInit {
 
   print() {
   
-    let x = {name:'', prix:'', qty:'', id:''}
+    let x = {name:'', prix:'', qty:'', id:'', specify:''}
     for (let i = 0; i < this.selectedProducts.length; i++) {
       x.name = this.selectedProducts[i].name
       x.prix = this.selectedProducts[i].prix
       x.qty = this.selectedProducts[i].qty
+      x.specify = this.selectedProducts[i].specify
       x.id = this.selectedProducts[i]._id
       this.addCaisse.caisse(x).subscribe(
         (data)=>{

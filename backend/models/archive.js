@@ -2,7 +2,9 @@ const mongoose = require('mongoose')
 
 const archiveSchema = mongoose.Schema({
     name : String,
-    prix : String,
+    prix : Number,
+    qty : Number,
+    specify : String,
     date : String,
     time : String
 })

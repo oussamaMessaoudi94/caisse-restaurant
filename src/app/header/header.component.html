@@ -1,18 +1,24 @@
 <header>
-    <h1>Restaurant POS</h1>
+    <h1>Restaurant POS </h1>
+    <div *ngIf="!token">
+      <a href="login"><img style="height: 30px; margin-left: 90%; margin-top: -100px;" src="assets/login.png" alt=""></a>
+    </div>
+    <div *ngIf="token">
+      <a  (click)="removeToken()"><img style="height: 30px; margin-left: 90%; margin-top: -100px;" src="assets/enter.png" alt=""></a>
+    </div>
+    
     <!-- Toggle Button (Hamburger Menu) -->
     <div class="menu-toggle" id="menu-toggle">
       <span></span>
       <span></span>
       <span></span>
     </div>
-
     <!-- Navigation Bar -->
     <nav class="navbar" id="navbar">
       <ul>
         <li><a href="">Home</a></li>
         <li></li>
-        <div id="dropdown">
+        <div *ngIf="token" id="dropdown">
           <ul>
               <li><a href="#">Blog</a>
                   <ul>
@@ -22,11 +28,11 @@
                       </li>
                   </ul>
               </li>
+              <li><a href="comptabilite">Comptabilité</a></li>
               <!-- li><a href="#">Contact</a>
               </li -->
           </ul>
       </div>
-        <li><a href="#">Comptabilité</a></li>
         <li><a href="#">About</a></li>
         <li><a href="#">Services</a></li>
         <li><a href="#">Contact</a></li>

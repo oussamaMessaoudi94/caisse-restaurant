@@ -24,7 +24,7 @@ export class PrintCaisseComponent implements OnInit {
 console.log(this.finded);
 
         for (let i = 0; i < this.finded.length; i++) {
-          this.sum += this.finded[i].prix
+          this.sum += this.finded[i].prix * this.finded[i].qty
 
         }
       }
@@ -44,9 +44,11 @@ console.log(this.finded);
 
   print(){
     for (let i = 0; i < this.finded.length; i++) {
-      let p = {name:'', prix:'', qty:'', date:'', time:''}
+      let p = {name:'', prix:'', qty:'', specify:'', date:'', time:''}
       p.name = this.finded[i].name,
       p.prix = this.finded[i].prix,
+      p.qty = this.finded[i].qty
+      p.specify = this.finded[i].specify
       p.date = this.formatDate,
       p.time = this.timeString
   

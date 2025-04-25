@@ -4,6 +4,8 @@ import { PrintCaisseComponent } from './print-caisse/print-caisse.component';
 import { AcceuilComponent } from './acceuil/acceuil.component';
 import { AddProdComponent } from './add-prod/add-prod.component';
 import { TableProdComponent } from './table-prod/table-prod.component';
+import { ComptabiliteComponent } from './comptabilite/comptabilite.component';
+import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
   {path:'', component:AcceuilComponent},
@@ -11,6 +13,8 @@ const routes: Routes = [
   {path:'add-prod', component:AddProdComponent},
   {path:'add-prod/:id', component:AddProdComponent},
   {path:'my-prod', component:TableProdComponent},
+  {path:'comptabilite', component:ComptabiliteComponent},
+  {path:'login', component:LoginComponent},
 ];
 
 @NgModule({

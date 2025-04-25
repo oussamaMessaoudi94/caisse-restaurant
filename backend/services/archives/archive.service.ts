@@ -11,4 +11,8 @@ archiveUrl = 'http://localhost:3000/archives'
   addArchive(archive:any){
     return this.httpClient.post<{message:any}>(`${this.archiveUrl}/addArchive`, archive)
   }
+
+  getArchive(){
+    return this.httpClient.get<{findedA:any}>(`${this.archiveUrl}`,)
+  }
 }

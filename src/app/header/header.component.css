@@ -262,7 +262,7 @@ footer {
   *:focus,
   input[type=radio]:focus + label::before {
     border: transparent;
-    box-shadow: 0px 0px 0px 2px #121943;
+
     outline: solid 4px transparent;
   }
   
