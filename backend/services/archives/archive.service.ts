@@ -13,6 +13,18 @@ archiveUrl = 'http://localhost:3000/archives'
   }
 
   getArchive(){
-    return this.httpClient.get<{findedA:any}>(`${this.archiveUrl}`,)
+    return this.httpClient.get<{findedA:any}>(`${this.archiveUrl}`)
+  }
+
+  getArchiveId(id:any){
+    return this.httpClient.get<{findRes:any}>(`${this.archiveUrl}/${id}`)
+  }
+
+  putArchive(transfert:any){
+    return this.httpClient.put<{message:any}>(`${this.archiveUrl}/${transfert._id}`, transfert)
+  }
+
+  deleteArchive(id:any){
+    return this.httpClient.delete<{message:any}>(`${this.archiveUrl}/${id}`,)
   }
 }

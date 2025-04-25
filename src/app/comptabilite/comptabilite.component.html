@@ -1,7 +1,6 @@
 <body>
     <h1 style="text-align: center;">Produits Information</h1>
-    <input type="text" id="searchInput"
-    style="margin-bottom: 10px; margin-left: 80%;" placeholder="Search .." class="">
+    <input type="text" id="searchInput" style="margin-bottom: 10px; margin-left: 80%;" placeholder="Search .." class="">
     <table class="styled-table" id="dataTable">
         <caption>Produits Information</caption>
         <thead>
@@ -15,7 +14,8 @@
                 <th>Action</th>
             </tr>
         </thead>
-        <tbody id="tableBody" *ngFor="let findedA of findedA | paginate:{itemsPerPage: 5, currentPage:p }let i=index" class="item">
+        <tbody id="tableBody" *ngFor="let findedA of findedA | paginate:{itemsPerPage: 5, currentPage:p }let i=index"
+            class="item">
             <tr>
                 <td>{{i+1}}</td>
                 <td>{{findedA.name}}</td>
@@ -23,13 +23,86 @@
                 <td>{{findedA.qty}}</td>
                 <td>{{findedA.specify}}</td>
                 <td>{{findedA.date}}</td>
-                <td> <button class="button-91" role="button" (click)="editArchive(findedA._id)">Edit</button> <button class="button-92" role="button" (click)="deleteArchive(findedA._id)">Delete</button></td>
+                <td> <button class="button-91" role="button"
+                        onclick="document.getElementById('id01').style.display='block'"
+                        (click)="editArchive(findedA._id)">Edit</button> <button class="button-92" role="button"
+                        (click)="deleteArchive(findedA._id)">Delete</button></td>
+                <!-- The Modal -->
+                <div id="id01" class="w3-modal">
+                    <div style="margin-left: 15%; height: 75%;" class="w3-modal-content w3-animate-bottom">
+                        <header class="w3-container w3-teal">
+                            <span style="font-size: 150%;"
+                                onclick="document.getElementById('id01').style.display='none'"
+                                class="w3-button w3-display-topright" (click)="compta()">&times;</span>
+                            <h2 style="text-align: center;">Edit Archives</h2>
+                        </header>
+                        <div class="container">
+                            <div class=" text-center mt-5 ">
+                            </div>
+                            <div class="row ">
+                                <div class="col-lg-7 mx-auto">
+                                    <div class="card mt-2 mx-auto p-4 bg-light">
+                                        <div class="card-body bg-light">
+                                            <div class="container">
+                                                <form id="contact-form" role="form">
+                                                    <div class="controls">
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                <label for="form_name">Name Prod *</label>
+                                                                <input type="text" class="form-control" [(ngModel)]="findId.name" [ngModelOptions]="{standalone: true}" required="" >
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <label for="form_name">Prix *</label>
+                                                                <input type="text" class="form-control" [(ngModel)]="findId.prix" [ngModelOptions]="{standalone: true}" required="">
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <label for="form_name">Qty *</label>
+                                                                <input type="number" class="form-control" [(ngModel)]="findId.qty" [ngModelOptions]="{standalone: true}" required="">
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <label for="form_name">Date *</label>
+                                                                <input type="text" class="form-control" [(ngModel)]="findId.date" [ngModelOptions]="{standalone: true}" required="">
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                <div class="form-group">
+                                                                    <label for="form_need">Add specify *</label>
+                                                                    <select
+                                                                    class="form-control"
+                                                                       [(ngModel)]="findId.specify"
+                                                                        [ngModelOptions]="{ standalone: true }">
+                                                                        <option value="" disabled  selected>--Select Your Issue--
+                                                                        </option>
+                                                                        <option value="food">food</option>
+                                                                        <option value="cafee">cafee</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row" style="margin-top: 15px;">
+                                                            <div class="col-md-12">
+                                                                <input type="submit"
+                                                                  value="Edit"  class="btn btn-success btn-send  pt-2 btn-block" (click)="editArchiveId(findId._id)">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </tr>
         </tbody>
     </table>
+
     <div id="pagination" style="text-align: center;">
         <pagination-controls (pageChange)="p=$event"></pagination-controls>
-      </div>
+    </div>
 
     <footer style="margin-top: 200px;">
         <p>&copy; 2025 Restaurant POS</p>

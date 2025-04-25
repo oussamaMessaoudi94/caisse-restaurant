@@ -14,6 +14,7 @@ const routes: Routes = [
   {path:'add-prod/:id', component:AddProdComponent},
   {path:'my-prod', component:TableProdComponent},
   {path:'comptabilite', component:ComptabiliteComponent},
+  {path:'comptabilite/:id', component:ComptabiliteComponent},
   {path:'login', component:LoginComponent},
 ];
 

@@ -149,38 +149,6 @@ app.delete('/add-caisse/:id', (req, res) => {
     )
 })
 
-// add archive 
-app.post('/archives/addArchive', (req, res) => {
-    const archiveSchema = new archive({
-        name: req.body.name,
-        prix: req.body.prix,
-        qty: req.body.qty,
-        specify: req.body.specify,
-        date: req.body.date,
-        time: req.body.time
-    })
-    archiveSchema.save().then(() => {
-        res.status(200).json({
-            message: 'success'
-        })
-    }).catch((error) => {
-        res.status(200).json({
-            message: 'error'
-        })
-    })
-})
-
-
-// get all Archives
-app.get('/archives', (req, res) => {
-    archive.find().then(
-        (finded) => {
-            res.status(200).json({
-                findedA: finded
-            })
-        }
-    )
-})
 
 // delete all caisse
 app.delete('/add-caisse', (req, res) => {
@@ -193,6 +161,7 @@ app.delete('/add-caisse', (req, res) => {
     )
 })
 
+// get caisse by id
 app.get('/add-caisse/:id', (req, res) => {
     const id = req.params.id;
 
@@ -292,4 +261,84 @@ app.post('/signup/login', async (req, res)=>{
         user : token
     })
 })
+
+
+// add archive 
+app.post('/archives/addArchive', (req, res) => {
+    const archiveSchema = new archive({
+        name: req.body.name,
+        prix: req.body.prix,
+        qty: req.body.qty,
+        specify: req.body.specify,
+        date: req.body.date,
+        time: req.body.time
+    })
+    archiveSchema.save().then(() => {
+        res.status(200).json({
+            message: 'success'
+        })
+    }).catch((error) => {
+        res.status(200).json({
+            message: 'error'
+        })
+    })
+})
+
+
+// get all Archives
+app.get('/archives', (req, res) => {
+    archive.find().then(
+        (finded) => {
+            if (finded) {
+                res.status(200).json({
+                    findedA: finded
+                })  
+            }
+
+        }
+    )
+})
+
+// delete archive by id
+app.delete('/archives/:id', (req, res)=>{
+    archive.deleteOne({_id:req.params.id}).then((result)=>{
+        if (result) {
+            res.status(200).json({
+                message : 'deleted'
+            })
+        }
+    })
+})
+
+// get archives by id
+app.get('/archives/:id', (req, res)=>{
+    const id = req.params.id;
+
+    // Validate MongoDB ObjectId
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+        return res.status(400).json({ message: "Invalid ID format" });
+    }
+
+    archive.findOne({ _id: id })
+        .then(result => {
+            if (result) {
+                res.status(200).json({ findRes: result });
+            } else {
+                res.status(404).json({ message: "Caisse not found" });
+            }
+        })
+        .catch(err => {
+            console.error(err);
+            res.status(500).json({ message: "Server error", error: err });
+        });
+})
+
+// delete archive by id
+app.put('/archives/:id', (req, res) => {
+    archive.findByIdAndUpdate({ _id:req.params.id }, req.body).then(() => {
+        res.status(200).json({
+            message: 'update'
+        })
+    })
+});
 module.exports = app 
