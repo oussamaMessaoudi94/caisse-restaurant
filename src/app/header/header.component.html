@@ -17,22 +17,24 @@
     <nav class="navbar" id="navbar">
       <ul>
         <li><a href="">Home</a></li>
-        <li></li>
-        <div *ngIf="token" id="dropdown">
-          <ul>
-              <li><a href="#">Produits</a>
-                  <ul>
-                      <li><a href="add-prod">Add Prod</a>
-                      </li>
-                      <li><a href="my-prod">My Prod</a>
-                      </li>
-                  </ul>
-              </li>
-              <li><a href="comptabilite">Comptabilité</a></li>
-              <!-- li><a href="#">Contact</a>
-              </li -->
-          </ul>
-      </div>
+        
+        <div *ngIf="token">
+          <li style="font-size: larger;margin-left: 10px;" id="btn">
+            Products
+            <i class="bx bx-chevron-down" id="arrow"></i>
+          </li>
+          <div class="dropdown" id="dropdown">
+            <a href="add-prod">
+              <i class="bx bx-folder"></i>
+              Add prod
+            </a>
+            <a href="my-prod">
+              <i class="bx bx-cog"></i>
+              My Prod
+            </a>
+          </div>
+          <li><a href="comptabilite">Comptabilité</a></li>
+        </div>
         <li><a href="#">About</a></li>
         <li><a href="#">Services</a></li>
         <li><a href="#">Contact</a></li>

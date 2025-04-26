@@ -17,7 +17,7 @@ body {
   margin-left: 35%;
   background-color: #222;
   border-radius: 15px;
-  height: 450px;
+  height: 400px;
   width: 350px;
   position: relative;
   overflow: hidden;
@@ -238,4 +238,12 @@ body {
   opacity: 1;
   visibility: visible;
   -webkit-transition: all 0.3s ease;
+}
+
+footer {
+  text-align: center;
+  padding: 15px;
+  background: #333;
+  color: white;
+  margin-top: 4%;
 }

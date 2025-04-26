@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { jwtDecode } from 'jwt-decode';
 declare function toggle(): void
+declare function dropdown(): void
 
 @Component({
   selector: 'app-header',
@@ -14,6 +15,7 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     toggle()
+
         const decodeToken = (token: string | null)=>{
           if (!token) {
               return null
@@ -22,6 +24,7 @@ export class HeaderComponent implements OnInit {
       }
       const rawToken = localStorage.getItem('token');
       this.token = decodeToken(rawToken);
+      dropdown()
   }
 
   removeToken(){
