@@ -41,7 +41,7 @@ title:any
 
 
   addProd(id:any){
-    if (id) {
+    if (this.id) {
       this.addProdService.editProd(this.findId).subscribe(
         (data)=>{
           console.log(data.message);

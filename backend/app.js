@@ -45,7 +45,7 @@ app.post('/addProduct/addProd', (req, res) => {
         qty: req.body.qty,
         specify: req.body.specify
     })
-    prodSchema.save().then(() => {
+    prodSchema.save().then(() => { 
         res.status(200).json({
             message: 'success'
         })
@@ -53,7 +53,7 @@ app.post('/addProduct/addProd', (req, res) => {
         .catch((error) => {
             res.status(200).json({
                 message: 'error'
-            })
+            }) 
         })
 })
 
@@ -319,7 +319,7 @@ app.get('/archives/:id', (req, res)=>{
         return res.status(400).json({ message: "Invalid ID format" });
     }
 
-    archive.findOne({ _id: id })
+    archive.findOne({ _id: id }) 
         .then(result => {
             if (result) {
                 res.status(200).json({ findRes: result });

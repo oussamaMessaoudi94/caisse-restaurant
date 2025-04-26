@@ -14,6 +14,9 @@ export class AcceuilComponent implements OnInit {
   findedProd: any = {}
   selected :any
   selectedProducts: any[] = [];
+  selectedCategories: any[] = [];
+  filteredProducts: any[] = [];
+  selectedCateg: any[] = [];
   sum: number = 0
   caisseForm!: FormGroup
   constructor(private fb: FormBuilder, private addCaisse: AddCaisseService, private addProdService: AddProdService, private router: Router, private activatedRoute: ActivatedRoute) { }
@@ -41,13 +44,68 @@ export class AcceuilComponent implements OnInit {
       console.log('Product not found with ID:', id);
     }
   }
+
+  butCoffe(id:any){
+    const selectedProds = this.findedProd.filter((prod: any) => prod.specify === 'coffee');
+    
+    selectedProds.forEach((prod: any) => {
+      // Prevent adding duplicates
+      if (!this.selectedCategories.some((p: any) => p._id === prod._id)) {
+        this.selectedCategories.push(prod);
+      }
+    });
+
+    console.log('Selected Categories:', this.selectedCategories);
+  }
+
+  butFood(id:any){
+    const selectedProds = this.findedProd.filter((prod: any) => prod.specify === 'food');
+    
+    selectedProds.forEach((prod: any) => {
+      // Prevent adding duplicates
+      if (!this.selectedCategories.some((p: any) => p._id === prod._id)) {
+        this.selectedCategories.push(prod);
+      }
+    });
+
+    console.log('Selected Categories:', this.selectedCategories);
+  }
+  butGlace(id:any){
+    const selectedProds = this.findedProd.filter((prod: any) => prod.specify === 'Glace');
+    
+    selectedProds.forEach((prod: any) => {
+      // Prevent adding duplicates
+      if (!this.selectedCategories.some((p: any) => p._id === prod._id)) {
+        this.selectedCategories.push(prod);
+      }
+    });
+
+    console.log('Selected Categories:', this.selectedCategories);
+  }
   
+  loadProductsByCategory(category: string) {
+    this.filteredProducts = this.findedProd.filter((prod: any) => prod.specify === category);
+    console.log('Products for category', category, ':', this.filteredProducts);
+}
+
+selectProduct(productId: any) {
+  const selectedProd = this.filteredProducts.find((prod: any) => prod._id === productId);
+  
+  if (selectedProd) {
+    if (!this.selectedCategories.some((p: any) => p._id === selectedProd._id)) {
+      this.selectedCategories.push(selectedProd);
+      this.sum += selectedProd.qty * selectedProd.prix;
+    }
+    console.log('Selected Categories:', this.selectedCategories);
+  } else {
+    console.log('Product not found with ID:', productId);
+  }
+}
   removeProd(id: any) {
     this.selectedProducts = this.selectedProducts.filter(prod => prod._id !== id);
   }
 
   print() {
-  
     let x = {name:'', prix:'', qty:'', id:'', specify:''}
     for (let i = 0; i < this.selectedProducts.length; i++) {
       x.name = this.selectedProducts[i].name

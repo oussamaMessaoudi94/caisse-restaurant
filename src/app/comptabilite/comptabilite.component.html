@@ -1,8 +1,8 @@
 <body>
-    <h1 style="text-align: center;">Produits Information</h1>
-    <input type="text" id="searchInput" style="margin-bottom: 10px; margin-left: 80%;" placeholder="Search .." class="">
+    <h1 style="text-align: center;">Comptabilté Information</h1>
+    <input type="text" [(ngModel)]="searchTerm" (input)="onSearch()" placeholder="Search ..." />
     <table class="styled-table" id="dataTable">
-        <caption>Produits Information</caption>
+        <caption>Comptabilté Information</caption>
         <thead>
             <tr>
                 <th>ID</th>
@@ -14,10 +14,9 @@
                 <th>Action</th>
             </tr>
         </thead>
-        <tbody id="tableBody" *ngFor="let findedA of findedA | paginate:{itemsPerPage: 5, currentPage:p }let i=index"
-            class="item">
+        <tbody id="tableBody" *ngFor="let findedA of filteredFindedA  | paginate:{itemsPerPage: 5, currentPage:p } let i=index" class="item">
             <tr>
-                <td>{{i+1}}</td>
+                <td>{{ (p - 1) * 5 + i + 1 }}</td>
                 <td>{{findedA.name}}</td>
                 <td>{{findedA.prix}} DT</td>
                 <td>{{findedA.qty}}</td>

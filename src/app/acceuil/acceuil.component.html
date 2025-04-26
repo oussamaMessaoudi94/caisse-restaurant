@@ -3,7 +3,7 @@
     <section class="menu">
       <h2>Menu</h2>
       <div class="menu-items">
-        <button  *ngFor="let findedProd of findedProd" class="item" data-name="Pizza" data-price="10" (click)="moveAdd(findedProd._id)">{{findedProd.name}} -
+        <button  *ngFor="let findedProd of filteredProducts" class="item" data-name="Pizza" data-price="10" (click)="moveAdd(findedProd._id)">{{findedProd.name}} -
           {{findedProd.prix}} DT</button>
       </div>
     </section>
@@ -26,8 +26,13 @@
       <button class="checkout" (click)="print()">Checkout</button>
     </section>
   </main>
-
-  <footer style="margin-top:220px;">
+  <div class="buttons">
+    <h1>Choose categories</h1>
+    <button id="but" class="up" (click)="loadProductsByCategory('food')">Food</button>
+    <button id="but" class="slide" (click)="loadProductsByCategory('coffee')">Coffee</button>
+    <button id="but" class="offset" (click)="loadProductsByCategory('Glace')">Glace</button>
+  </div>
+  <footer>
     <p>&copy; 2025 Restaurant POS</p>
   </footer>
 
