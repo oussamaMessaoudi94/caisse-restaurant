@@ -388,108 +388,75 @@ footer {
 
 /* button annime */
 
-.pulse:hover,
-.pulse:focus {
-  -webkit-animation: pulse 1s;
-          animation: pulse 1s;
-  box-shadow: 0 0 0 2em rgba(255, 255, 255, 0);
+.button {
+  background-color: #04AA6D; /* Green */
+  border: none;
+  color: white;
+  padding: 40px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 2px 2px;
+  margin-left: 15%;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  border-radius: 30%;
 }
 
-@-webkit-keyframes pulse {
-  0% {
-    box-shadow: 0 0 0 0 var(--hover);
-  }
+.button1 {
+  background-color: white; 
+  color: black; 
+  border: 2px solid #04AA6D;
 }
 
-@keyframes pulse {
-  0% {
-    box-shadow: 0 0 0 0 var(--hover);
-  }
-}
-.close:hover,
-.close:focus {
-  box-shadow: inset -3.5em 0 0 0 var(--hover), inset 3.5em 0 0 0 var(--hover);
+.button1:hover {
+  background-color: #04AA6D;
+  color: white;
 }
 
-.raise:hover,
-.raise:focus {
-  box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
-  transform: translateY(-0.25em);
+.button2 {
+  background-color: white; 
+  color: black; 
+  border: 2px solid #008CBA;
 }
 
-.up:hover,
-.up:focus {
-  box-shadow: inset 0 -3.25em 0 0 var(--hover);
+.button2:hover {
+  background-color: #008CBA;
+  color: white;
 }
 
-.slide:hover,
-.slide:focus {
-  box-shadow: inset 6.5em 0 0 0 var(--hover);
+.button3 {
+  background-color: white; 
+  color: black; 
+  border: 2px solid #f44336;
 }
 
-.offset {
-  box-shadow: 0.3em 0.3em 0 0 var(--color), inset 0.3em 0.3em 0 0 var(--color);
-}
-.offset:hover, .offset:focus {
-  box-shadow: 0 0 0 0 var(--hover), inset 6em 3.5em 0 0 var(--hover);
+.button3:hover {
+  background-color: #f44336;
+  color: white;
 }
 
-.fill {
-  --color: #a972cb;
-  --hover: #cb72aa;
+.button4 {
+  background-color: white;
+  color: black;
+  border: 2px solid #e7e7e7;
 }
 
-.pulse {
-  --color: #ef6eae;
-  --hover: #ef8f6e;
+.button4:hover {background-color: #e7e7e7;}
+
+.button5 {
+  background-color: white;
+  color: black;
+  border: 2px solid #555555;
 }
 
-.close {
-  --color: #ff7f82;
-  --hover: #ffdc7f;
-}
-
-.raise {
-  --color: #ffa260;
-  --hover: #e5ff60;
-}
-
-.up {
-  --color: #e4cb58;
-  --hover: #94e458;
-}
-
-.slide {
-  --color: #8fc866;
-  --hover: #66c887;
-}
-
-.offset {
-  --color: #19bc8b;
-  --hover: #1973bc;
-}
-
-button {
-  color: var(--color);
-  transition: 0.25s;
-}
-button:hover, button:focus {
-  border-color: var(--hover);
-  color: #fff;
-}
-
-
-#but {
-  background: none;
-  border: 2px solid;
-  font: inherit;
-  line-height: 1;
-  margin: 0.5em;
-  padding: 1em 2em;
-  margin-left: 20%;
+.button5:hover {
+  background-color: #555555;
+  color: white;
 }
 
 h1 {
   text-align: center;
-  font-weight: 500;
+  font-weight: bold;
 }
