@@ -16,7 +16,7 @@
     <!-- Navigation Bar -->
     <nav class="navbar" id="navbar">
       <ul>
-        <li><a href="">Home</a></li>
+        <li><a routerLink="" >Home</a></li>
         
         <div *ngIf="token">
           <li style="font-size: larger;margin-left: 10px;" id="btn">
@@ -24,16 +24,16 @@
             <i class="bx bx-chevron-down" id="arrow"></i>
           </li>
           <div class="dropdown" id="dropdown">
-            <a href="add-prod">
+            <a routerLink="add-prod">
               <i  class="bx bx-cog"></i>
               Add prod
             </a>
-            <a href="my-prod">
+            <a routerLink="my-prod">
               <i class="bx bx-folder"></i>
               My Prod
             </a>
           </div>
-          <li><a href="comptabilite">Comptabilité</a></li>
+          <li><a routerLink="comptabilite">Comptabilité</a></li>
         </div>
         <li><a href="#">About</a></li>
         <li><a href="#">Services</a></li>
